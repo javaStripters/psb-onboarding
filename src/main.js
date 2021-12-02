@@ -14,7 +14,6 @@ import 'v-markdown-editor/dist/v-markdown-editor.css';
 Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
-
 Vue.use(Editor)
 
 
