@@ -7,7 +7,7 @@
         align-items: center;
       "
     >
-      <Title 
+      <Title
         text="Проекты"
         weight="bold"
         size="xl"
@@ -21,8 +21,9 @@
           <img src="../../assets/three-vertical-dots.svg" alt="">
         </button>
         <div class="project__navigation navigation">
-          <router-link 
+          <router-link
             class="navigation__item"
+            :class="[$route.path.split('/')[5] === button.goTo ? 'navigation__item--active' : 'navigation__item--passive']"
             v-for="(button, index) in navigationButtons"
             :key="index"
             :to="button.goTo"
@@ -87,7 +88,7 @@ export default {
     this.getProject()
   },
   components: {
-    Title, 
+    Title,
     SearchBox,
   }
 }
@@ -103,10 +104,10 @@ export default {
 .project__header {
   height: 112px;
   width: 100%;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   background: #4147A5;
   border-radius: 4px 4px 0px 0px;
-
+  border-bottom: 3px #DFDFE2 solid;
   display: grid;
   grid-template-columns: auto 30px;
   grid-template-rows: 30px auto;
@@ -124,15 +125,22 @@ export default {
 .project__navigation {
   grid-area: 2 / 1 / 3 / -1;
   align-self: end;
+
 }
 .navigation {
   display: flex;
   column-gap: 30px;
 }
+.navigation__item--active {
+  border-bottom: tomato 3px solid;
+}
 .navigation__item {
   text-transform: uppercase;
   font-size: 14px;
   color: #E3E5E8;
+  position: relative;
+  top: 3px;
+  line-height: 30px;
 }
 .project__body {
   height: calc(100% - 112px);
