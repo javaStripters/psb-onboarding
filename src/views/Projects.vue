@@ -1,5 +1,20 @@
 <template>
   <div class="projects">
+    <div 
+      style="
+        grid-area: 1 / 1 / 2 / -1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <Title 
+        text="Проекты"
+        weight="bold"
+        size="xl"
+      />
+      <SearchBox />
+    </div>
     <Card 
       class="projects__item--sm project-tile"
       v-for="(project, index) in projectsTiles"
@@ -49,6 +64,8 @@
 
 <script>
 import Card from '../components/Card.vue'
+import Title from '../components/Title.vue'
+import SearchBox from '../components/SearchBox.vue'
 export default {
   data: () => ({
     projectsTiles: [],
@@ -65,7 +82,9 @@ export default {
     this.getProjects()
   },
   components: {
-    Card
+    Card,
+    Title,
+    SearchBox,
   }
 }
 </script>
@@ -84,6 +103,7 @@ export default {
     display: flex;
     flex-direction: column;
     display: inline-block;
+    line-height: 1.5em;
   }
   .project-tile__underline--gray {
     height: 1px;
