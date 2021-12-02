@@ -35,7 +35,7 @@ const routes = [
 
   {
     path: '*',
-    redirect: 'authorized/home'
+    redirect: '/authorized/home'
   }
   
 ]
