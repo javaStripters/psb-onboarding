@@ -19,8 +19,68 @@ const routes = [
       },
       {
         path: 'projects',
-        component: () => import('./views/Projects.vue')
+        component: () => import('./views/Projects.vue'),
+        children: [
+          {
+            path: 'all',
+            component: () => import('./views/projects/AllProjects.vue')
+          },
+          {
+            path: 'project/:id',
+            component: () => import('./views/projects/Project.vue'),
+            children: [
+              {
+                path: 'description',
+                component: () => import('./views/project/Description.vue')
+              },
+              {
+                path: 'architecture',
+                component: () => import('./views/project/Architecture.vue')
+              },
+              {
+                path: 'team',
+                component: () => import('./views/project/Team.vue')
+              },
+              {
+                path: 'documentation',
+                component: () => import('./views/project/Documentation.vue')
+              },
+              {
+                path: 'events',
+                component: () => import('./views/project/Events.vue')
+              }
+            ]
+          },
+        ]
       },
+      
+      /*
+      {
+        path: 'project/:id',
+        component: () => import('./views/Project.vue'),
+        children: [
+          {
+            path: '/description',
+            component: () => import('./views/project/Description.vue')
+          },
+          {
+            path: 'architecture',
+            component: () => import('./views/project/Architecture.vue')
+          },
+          {
+            path: 'team',
+            component: () => import('./views/project/Team.vue')
+          },
+          {
+            path: 'documentation',
+            component: () => import('./views/project/Documentation.vue')
+          },
+          {
+            path: 'events',
+            component: () => import('./views/project/Events.vue')
+          }
+        ]
+      },*/
       {
         path: 'about',
         component: () => import('./views/About.vue')
@@ -31,12 +91,10 @@ const routes = [
       }
     ]
   },
-
-
   {
     path: '*',
     redirect: '/authorized/home'
-  }
+  },
   
 ]
 

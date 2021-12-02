@@ -1,5 +1,8 @@
 <template>
-  <div class="card card--light">
+  <div 
+    class="card card--light"
+    @click="onClick"
+  >
     <div 
       class="card__header"
       v-if="title"
@@ -16,6 +19,7 @@
 export default {
   props: [
     'title' /* String */,
+    'onClick' /* Function */,
   ]
 }
 </script>

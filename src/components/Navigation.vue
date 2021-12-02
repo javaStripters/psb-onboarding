@@ -6,7 +6,7 @@
     <div class="header__navigation navigation">
       <div 
         class="navigation__item"
-        :class="[button.goTo === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
+        :class="[button.goTo.split('/')[0] === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
         v-for="(button, index) in buttons"
         :key="index"
       >
@@ -49,7 +49,7 @@ export default {
       {
         name: 'projects',
         text: 'Проекты',
-        goTo: 'projects',
+        goTo: 'projects/all',
       },
       {
         name: 'forum',

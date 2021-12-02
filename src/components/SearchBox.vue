@@ -29,7 +29,7 @@ export default {
   box-sizing: border-box;
   border-radius: 20px;
   min-width: 100px;
-  max-width: 250px;
+  max-width: 450px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,6 +39,7 @@ export default {
   border-radius: 20px 0 0 20px;
   padding: 0 0 0 20px;
   height: 100%;
+  width: 300px;
 }
 .search-box__clear-btn {
   position: relative;
