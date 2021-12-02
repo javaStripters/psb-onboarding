@@ -6,7 +6,6 @@
 
 <style>
 @import url('./reset.css');
-@import url('http://fonts.cdnfonts.com/css/gilroy-bold');
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 #app {
   font-family: 'PT Sans', sans-serif;
