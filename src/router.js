@@ -56,7 +56,21 @@ const routes = [
       },
       {
         path: 'forum',
-        component: () => import('./views/StackOverSlow.vue')
+        component: () => import('./views/StackOverSlow.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('./views/forum/Questions.vue')
+          },
+          {
+            path: 'question/:id',
+            component: () => import('./views/forum/Question.vue')
+          },
+          {
+            path: 'leaders',
+            component: () => import('./views/forum/Leaders.vue')
+          }
+        ]
       },
       {
         path: 'employees',

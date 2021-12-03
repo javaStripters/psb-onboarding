@@ -7,7 +7,7 @@
       <div class="header__navigation navigation">
         <div 
           class="navigation__item"
-          :class="[button.goTo.split('/')[0] === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
+          :class="[button.goTo.split('/')[2] === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
           v-for="(button, index) in buttons"
           :key="index"
         >
@@ -45,7 +45,7 @@ export default {
       {
         name: 'home',
         text: 'Главная',
-        goTo: 'home',
+        goTo: '/authorized/home',
         children: [
           {
             name: '',
@@ -62,12 +62,12 @@ export default {
       {
         name: 'projects',
         text: 'Проекты',
-        goTo: 'projects',
+        goTo: '/authorized/projects',
       },
       {
         name: 'forum',
         text: 'Форум',
-        goTo: 'forum',
+        goTo: '/authorized/forum',
       },
       {
         name: '',
@@ -77,7 +77,7 @@ export default {
       {
         name: 'employees',
         text: 'Сотрудники',
-        goTo: 'employees',
+        goTo: '/authorized/employees',
       },
     ]
   })
