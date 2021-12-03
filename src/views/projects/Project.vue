@@ -105,9 +105,9 @@ export default {
   height: 112px;
   width: 100%;
   padding: 10px 10px 0 10px;
-  background: #4147A5;
+  background: linear-gradient(180deg, #1B157C 0%, #262087 34.17%, #2F2991 64.9%, #4039AC 100%);
   border-radius: 4px 4px 0px 0px;
-  border-bottom: 3px #DFDFE2 solid;
+  border-bottom: 2px #DFDFE2 solid;
   display: grid;
   grid-template-columns: auto 30px;
   grid-template-rows: 30px auto;
@@ -132,18 +132,24 @@ export default {
   column-gap: 30px;
 }
 .navigation__item--active {
-  border-bottom: tomato 3px solid;
+  border-bottom: #FA4616 2px solid;
+  transition: .5s all;
+}
+.navigation__item--passive {
+  border-bottom: #DFDFE2 2px solid;
+  transition: .5s all;
 }
 .navigation__item {
   text-transform: uppercase;
   font-size: 14px;
   color: #E3E5E8;
   position: relative;
-  top: 3px;
+  top: 2px;
   line-height: 30px;
 }
 .project__body {
   height: calc(100% - 112px);
   background: white !important;
+  overflow-y: auto;
 }
 </style>

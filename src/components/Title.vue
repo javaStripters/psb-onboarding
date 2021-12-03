@@ -6,7 +6,7 @@
         size ? 'title--' + size : 'title--md',
         weight ? 'title--' + weight : 'title--normal'
       ]"
-    >{{text && text}}</p>
+    >{{text ? text : 'heh'}}</p>
   </div>
 </template>
 

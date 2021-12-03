@@ -7,7 +7,7 @@
       <div class="project-description__content-table">
 
       </div>
-      <Divider />
+      <Divider color="white"/>
       <div class="project-description__stack">
         <div class="project-description__aside-title">Стек проекта</div>
         <div class="project-description__tags">
@@ -20,7 +20,7 @@
           </div>
         </div>
       </div>
-      <Divider />
+      <Divider color="white"/>
       <div class="project-description__tools-links">
         <div class="project-description__aside-title">Инструменты</div>
         <div 

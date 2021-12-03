@@ -53,34 +53,10 @@ const routes = [
           },
         ]
       },
-      
-      /*
       {
-        path: 'project/:id',
-        component: () => import('./views/Project.vue'),
-        children: [
-          {
-            path: '/description',
-            component: () => import('./views/project/Description.vue')
-          },
-          {
-            path: 'architecture',
-            component: () => import('./views/project/Architecture.vue')
-          },
-          {
-            path: 'team',
-            component: () => import('./views/project/Team.vue')
-          },
-          {
-            path: 'documentation',
-            component: () => import('./views/project/Documentation.vue')
-          },
-          {
-            path: 'events',
-            component: () => import('./views/project/Events.vue')
-          }
-        ]
-      },*/
+        path: 'forum',
+        component: () => import('./views/StackOverSlow.vue')
+      },
       {
         path: 'about',
         component: () => import('./views/About.vue')

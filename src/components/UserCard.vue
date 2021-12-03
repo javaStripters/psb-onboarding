@@ -1,17 +1,17 @@
 <template>
-  <div class="user-card">
+  <div class="user-card" @click="onClick">
     <div class="user-card__icon">
-      <img src="" alt="">
+      <img :src="imgUrl" alt="">
     </div>
     <div class="user-card__text">
       <div class="user-card__user-name">
-        Eleanor Pena
+        {{ fullName }}
       </div>
       <div class="user-card__profession">
-        Middle QA
+        {{ profession }}
       </div>
       <div class="user-card__contact">
-        tanya.hill@example.com
+        {{ emailAdress }}
       </div>
     </div>
   </div>
@@ -19,7 +19,13 @@
 
 <script>
 export default {
-  
+  props: [
+    'fullName' /* String */,
+    'profession' /* String */,
+    'emailAdress' /* String */,
+    'imgUrl' /* String */,
+    'onClick' /* Function */, 
+  ]
 }
 </script>
 
@@ -37,6 +43,11 @@ export default {
   width: 80px;
   border-radius: 50%;
   background-color: #bbb;
+  overflow: hidden;
+}
+.user-card__icon img {
+  height: 100%;
+  width: 100%;
 }
 .user-card__text { 
   display: flex;

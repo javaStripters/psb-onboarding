@@ -165,6 +165,7 @@ export default {
     background: #FFFADC;
     border-radius: 11px;
   }
+  
 
 
 

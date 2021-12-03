@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 .authorized {
-  background: #E5E5E5;
+  background: #F2F2F2;
   height: 100vh;
 }
 .authorized__container {
