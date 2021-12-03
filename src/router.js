@@ -77,8 +77,22 @@ const routes = [
         component: () => import('./views/Employees.vue')
       },
       {
-        path: 'about',
-        component: () => import('./views/About.vue')
+        path: 'adaptation',
+        component: () => import('./views/Adaptation.vue'),
+        children: [
+          {
+            path: 'general',
+            component: () => import('./views/adaptation/General.vue')
+          },
+          {
+            path: 'education',
+            component: () => import('./views/adaptation/Education.vue')
+          },
+          {
+            path: 'testing',
+            component: () => import('./views/adaptation/Testing.vue')
+          },
+        ]
       },
       {
         path: 'upload',

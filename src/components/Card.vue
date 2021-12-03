@@ -28,7 +28,7 @@ export default {
 .card {
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
   border-radius: 4px;
-  padding: 20px;
+  padding: 24px;
   margin: 0;
 }
 .card--light {
@@ -36,7 +36,10 @@ export default {
 }
 .card__title {
   font-size: 26px;
+  font-weight: 20px;
   font-weight: 700;
+  position: relative;
+  top: -16px;
 }
 .card__divider {
   position: relative;

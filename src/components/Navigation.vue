@@ -71,8 +71,8 @@ export default {
       },
       {
         name: '',
-        text: 'База знаний',
-        goTo: '',
+        text: 'Адаптация',
+        goTo: '/authorized/adaptation/general',
       },
       {
         name: 'employees',
