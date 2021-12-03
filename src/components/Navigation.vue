@@ -1,22 +1,35 @@
 <template>
-  <div class="header">
-    <div class="header__icon">
-      <img src="" alt="">
-    </div>
-    <div class="header__navigation navigation">
-      <div 
-        class="navigation__item"
-        :class="[button.goTo.split('/')[0] === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
-        v-for="(button, index) in buttons"
-        :key="index"
-      >
-        <router-link 
-          class="navigation__link"
-          :to="button.goTo"
+  <div style="width: 100%; background: #ffffff; box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);">
+    <div class="header">
+      <div class="header__icon">
+        <img src="../assets/psb-logo.svg" alt="">
+      </div>
+      <div class="header__navigation navigation">
+        <div 
+          class="navigation__item"
+          :class="[button.goTo.split('/')[0] === $route.path.split('/')[2] ? 'navigation__item--active' : 'navigation__item--passive']"
+          v-for="(button, index) in buttons"
+          :key="index"
         >
-          {{button.text}}
-        </router-link>
+          <router-link 
+            class="navigation__link"
+            :to="button.goTo"
+          >
+            {{button.text}}
+          </router-link>
 
+        </div>
+      </div>
+      <div class="header__profile-section">
+        <div class="header__notificaton">
+          <img src="../assets/bell.svg" alt="">
+        </div>
+        <div class="header__profile">
+          
+        </div>
+        <div class="header__advanced-actions">
+          <img src="../assets/chevron-down.svg" alt="">
+        </div>
       </div>
     </div>
   </div>
@@ -73,16 +86,15 @@ export default {
 
 <style scoped>
 .header {
-  width: 100%;
+  max-width: 1200px;
   height: 90px;
-  background: #ffffff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05);
+  margin: 0px auto;
+  column-gap: 50px;
 }
 .navigation {
-  width: 100%;
   display: flex;
   column-gap: 40px;
   font-size: 16px;
@@ -117,5 +129,17 @@ export default {
   color: #30353B;
   transition: .3s all;
 }
- 
+.header__profile-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__profile {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #bbb;
+  margin-right: 8px;
+  margin-left: 18px;
+}
 </style>

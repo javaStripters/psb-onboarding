@@ -31,6 +31,7 @@ export default {
 
 <style scoped>
 .user-card {
+  cursor: pointer;
   background: #F5F6F7;
   box-shadow: 1px 1px 3px 0.5px rgba(0, 0, 0, 0.23);
   border-radius: 4px;

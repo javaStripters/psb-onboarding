@@ -64,10 +64,10 @@
         <div class="stack-over-slow__quick-filters">
           <button 
             class="stack-over-slow__quick-filter"
-            :class="[selectedButtons.indexOf(button.name) !== -1 ? 'stack-over-slow__quick-filter--active' : 'stack-over-slow__quick-filter--passive']"
+            :class="[choosedButton === button.name ? 'stack-over-slow__quick-filter--active' : 'stack-over-slow__quick-filter--passive']"
             v-for="(button, index) in quickFilterButtons"
             :key="index"
-            @click="toggleButton(button.name)"
+            @click="chooseButton(button.name)"
           >
             {{button.text}} 
           </button>
@@ -78,23 +78,38 @@
         </button>
       </div>
       <div class="stack-over-slow__questions">
-        <div class="stack-over-slow__question question">
+        <div 
+          class="stack-over-slow__question question"
+          v-for="(question, index) in overSlows"
+          :key="index"
+        >
           <div class="question__uptitle">
             вчера 187 просмотров
           </div>
           <div class="question__title">
-            Название самого вопроса
+            {{question.name}}
           </div>
           <div class="question__tags">
-            <div class="question__tag">
-              Heh
+            <div 
+              class="question__tag"
+              v-for="(tag, index) in question.tags"
+              :key="index"
+            >
+              {{tag}}
             </div>
           </div>
           <div class="question__answers-number">
-            0 <br/> ответ
+            <span>{{question.answers}}</span> <span>ответ</span>
           </div>
-          <div class="question__rating">
-            +7/-2
+          <div 
+            class="question__rating"
+            :class="{
+              'question__rating--neutral' : question.rating === 0,
+              'question__rating--positive' : question.rating > 0, 
+              'question__rating--negative' : question.rating < 0,
+            }"
+          >
+            {{question.rating}}
           </div>
         </div>
       </div>
@@ -119,25 +134,30 @@ export default {
       },
       {
         text: 'Без ответа',
-        name: 'unanswered'
+        name: 'no_answer'
       },
       {
         text: 'Закрытые',
-        name: 'closed'
+        name: 'solved'
       },
     ],
-    selectedButtons: ['new'],
-    openedDropdown: ''
+    choosedButton: 'new',
+    openedDropdown: '',
+    overSlows: []
   }), 
   methods: {
-    toggleButton(id) {
-      if (this.selectedButtons.indexOf(id) !== -1) {
-        this.selectedButtons = this.selectedButtons.filter( item => item !== id)
-      }
-      else {
-        this.selectedButtons.push(id)
-      }
+    chooseButton(id) {
+      this.choosedButton = id
+      this.getOverSlows()
+    },
+    getOverSlows() {
+      fetch(this.$store.state.server + '/overslow/questions?sort=' + this.choosedButton.toUpperCase())
+      .then(res => res.json())
+      .then(res => this.overSlows = res)
     }
+  },
+  mounted() {
+    this.getOverSlows()
   },
   components: {
     PageHeader,
@@ -240,6 +260,9 @@ export default {
 }
 .stack-over-slow__questions {
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 .question {
   background: #FFFFFF;
@@ -249,7 +272,7 @@ export default {
   border-radius: 4px;
   padding: 10px 20px;
   display: grid;
-  grid-template-columns: auto 40px 40px;
+  grid-template-columns: auto 80px 80px;
   grid-template-rows: 20px 40px 20px;
   column-gap: 10px;
 }
@@ -276,16 +299,40 @@ export default {
   border-radius: 11px;
 }
 .question__answers-number {
+  background: #FFFDF9;
+  border: 1px solid #E3E5E8;
+  border-radius: 4px;
+  padding: 0px 10px;
   grid-area: 1 / 2 / 4 / 3;
   text-align: center;
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1em;
+}
+.question__answers-number span:first-child {
+  font-size: 20px;
 }
 .question__rating {
+  border: 1px solid #E3E5E8;
+  border-radius: 4px;
   grid-area: 1 / 3 / 4 / 4;
   text-align: center;
   display: flex;
   align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+.question__rating--positive {
+  background: #E1FFE6;
+}
+.question__rating--negative {
+  background: #FFE6E6;
+}
+.question__rating--neutral {
+  background: #FFFADC;
 }
 
 </style>

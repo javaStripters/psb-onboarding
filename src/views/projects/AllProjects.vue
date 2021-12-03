@@ -103,6 +103,9 @@ export default {
     padding: 30px 0;
     grid-auto-flow: row;
   }
+  .project-tile {
+    cursor: pointer;
+  }
   .project-tile__title {
     font-size: 16px;
     display: flex;
