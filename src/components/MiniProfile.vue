@@ -36,7 +36,7 @@ export default {
 
 <style scoped>
 .user-profile {
-  padding: 10px;
+  padding: 20px 10px 10px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

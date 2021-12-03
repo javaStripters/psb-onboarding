@@ -163,6 +163,7 @@ export default {
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  overflow-y: auto;
 }
 .stack-over-slow__aside-title {
   color: #979A9D;

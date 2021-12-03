@@ -80,7 +80,7 @@ export default {
     },
     openProject(id) {
       console.log(id)
-      this.$router.push('/authorized/projects/project/' + id + '/')
+      this.$router.push('/authorized/projects/project/' + id + '/description')
     }
   },
   mounted() {

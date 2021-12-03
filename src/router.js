@@ -12,6 +12,7 @@ const routes = [
   {
     path: '/authorized',
     component: () => import('./views/Authorized.vue'),
+    name: 'root',
     children: [
       {
         path: 'home',
@@ -22,11 +23,11 @@ const routes = [
         component: () => import('./views/Projects.vue'),
         children: [
           {
-            path: 'all',
+            path: '',
             component: () => import('./views/projects/AllProjects.vue')
           },
           {
-            path: 'project/:id',
+            path: 'project/:id/',
             component: () => import('./views/projects/Project.vue'),
             children: [
               {
@@ -58,6 +59,10 @@ const routes = [
         component: () => import('./views/StackOverSlow.vue')
       },
       {
+        path: 'employees',
+        component: () => import('./views/Employees.vue')
+      },
+      {
         path: 'about',
         component: () => import('./views/About.vue')
       },
@@ -67,6 +72,7 @@ const routes = [
       }
     ]
   },
+  
   {
     path: '*',
     redirect: '/authorized/home'

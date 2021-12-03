@@ -2,7 +2,7 @@
   <div class="authorized">
     <Navigation />
     <div class="authorized__container">
-      <router-view />
+      <router-view></router-view>
     </div>
   </div>
 </template>

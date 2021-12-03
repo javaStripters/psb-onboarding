@@ -1,11 +1,22 @@
 <template>
   <div class="project-description">
     <div class="project-description__editor">
-      <markdown-editor :options="options"></markdown-editor>
+      <markdown-editor 
+        :options="options" 
+        height="100%" 
+        v-model="mdString"
+        @change="toArray(mdString)"
+      ></markdown-editor>
     </div>
     <div class="project-description__aside">
-      <div class="project-description__content-table">
-
+      <div class="project-description__content-table content-table">
+        <div 
+          class="content-table__item"
+          v-for="(item, index) in mdArray"
+          :key="index"
+        >
+          {{item.indexOf('#') !== -1 ? item.replaceAll('#', '') : ''}}
+        </div>
       </div>
       <Divider color="white"/>
       <div class="project-description__stack">
@@ -46,7 +57,7 @@ export default {
   ],
   data: () => ({
     options: {                   
-      lineNumbers: true,
+      lineNumbers: false,
       styleActiveLine: true,
       styleSelectedText: true,
       lineWrapping: true,
@@ -54,6 +65,8 @@ export default {
       tabSize: 2,
       indentUnit: 2
     },
+    mdString: '# Hello world!',
+    mdArray: []
   }),
   methods: {
     getProject() {
@@ -63,7 +76,18 @@ export default {
         this.project = res
         console.log(this.project)
       })
+    },
+    toArray(string) {
+      this.mdArray = string.split('\n')
     }
+  },
+  watch: {
+    project() {
+      this.mdString = this.project.goals
+    }
+  },
+  mounted() {
+    this.mdString = this.project.goals
   },
   components: {
     Divider,
@@ -77,15 +101,16 @@ export default {
   grid-template-columns: auto 250px;
   height: 100%;
 }
+
 .project-description__editor {
-  height: 100%;
+  overflow-y: auto;
 }
-.project-description__editor div {
-  height: 100%;
-}
+/*
 .project-description__editor div:nth-child(2)  {
   height: 100% !important;
-}
+  overflow-y: auto;
+
+} */
 .project-description__aside {
   background: #DFDFE2;
   display: grid;

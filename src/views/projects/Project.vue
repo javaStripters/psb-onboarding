@@ -27,6 +27,7 @@
             v-for="(button, index) in navigationButtons"
             :key="index"
             :to="button.goTo"
+            
           >
             {{button.text}}
           </router-link>
@@ -81,6 +82,7 @@ export default {
       .then(res => res.json())
       .then(res => {
         this.project = res
+        console.log(res)
       })
     }
   },

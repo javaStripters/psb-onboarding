@@ -49,7 +49,7 @@ export default {
       {
         name: 'projects',
         text: 'Проекты',
-        goTo: 'projects/all',
+        goTo: 'projects',
       },
       {
         name: 'forum',
@@ -62,9 +62,9 @@ export default {
         goTo: '',
       },
       {
-        name: '',
+        name: 'employees',
         text: 'Сотрудники',
-        goTo: '',
+        goTo: 'employees',
       },
     ]
   })
