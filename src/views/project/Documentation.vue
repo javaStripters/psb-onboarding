@@ -2,6 +2,7 @@
   <div class="documentation">
     <div class="documentation__title">Documents from library</div>
     <ExpansionPanel 
+      class="documentation__expansion-panel"
       :title="'Филиал'"
       :body="'Тут много полезного'"
     />
@@ -22,7 +23,6 @@ export default {
 
 <style scoped>
 .documentation {
-  padding: 20px 30px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -30,5 +30,8 @@ export default {
 .documentation__title {
   font-size: 26px;
   font-weight: 700;
+}
+.documentation__expansion-panel {
+  margin: 0px 2px;
 }
 </style>

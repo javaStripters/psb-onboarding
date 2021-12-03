@@ -64,18 +64,18 @@ export default {
   .team {
     display: grid;
     grid-template-columns: auto 250px;
+    column-gap: 30px;
   }
   .team__divisions {
-    padding: 18px 30px;
     display: flex;
     flex-direction: column;
     row-gap: 35px;
   }
   .team__user-profile {
-    background: #FAF7EF;
+    background: #F5F6F7;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
-    border-radius: 7px 0px 0px 7px;
-    margin-top: 62px;
+    border-radius: 7px;
+    margin-top: 45px;
     height: 500px;
     position: sticky;
     top: 62px;

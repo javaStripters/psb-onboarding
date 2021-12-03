@@ -9,17 +9,18 @@
       ></markdown-editor>
     </div>
     <div class="project-description__aside">
-      <div class="project-description__content-table content-table">
-        <div 
+      <div class="project-description__content-table content-table aside-card">
+        <div>
+          <div 
           class="content-table__item"
           v-for="(item, index) in mdArray"
           :key="index"
         >
           {{item.indexOf('#') !== -1 ? item.replaceAll('#', '') : ''}}
         </div>
+        </div>
       </div>
-      <Divider color="white"/>
-      <div class="project-description__stack">
+      <div class="project-description__stack aside-card">
         <div class="project-description__aside-title">Стек проекта</div>
         <div class="project-description__tags">
           <div 
@@ -31,17 +32,20 @@
           </div>
         </div>
       </div>
-      <Divider color="white"/>
-      <div class="project-description__tools-links">
+      <div class="project-description__tools-links aside-card">
         <div class="project-description__aside-title">Инструменты</div>
         <div 
           class="project-description__link-tile link-tile"
+          v-for="(tool, index) in project.instruments"
+          :key="index"
         >
           <div class="link-tile__icon">
-            <img src="" alt="">
+            <img :src="
+              tool.indexOf('github') !== -1 ? require('../../assets/git-icon.svg') : require('../../assets/figma-icon.svg')
+            ">
           </div>
           <div class="link-tile__text">
-
+            {{tool.slice(0, 23) + '...'}}
           </div>
         </div>
       </div>
@@ -79,6 +83,9 @@ export default {
     },
     toArray(string) {
       this.mdArray = string.split('\n')
+    },
+    openSite(link) {
+      this.$router.push(link)
     }
   },
   watch: {
@@ -100,10 +107,14 @@ export default {
   display: grid;
   grid-template-columns: auto 250px;
   height: 100%;
+  column-gap: 30px;
+  row-gap: 10px;
 }
 
 .project-description__editor {
   overflow-y: auto;
+  background: #F9F9F9;
+  border-radius: 7px;
 }
 /*
 .project-description__editor div:nth-child(2)  {
@@ -112,15 +123,26 @@ export default {
 
 } */
 .project-description__aside {
-  background: #DFDFE2;
   display: grid;
-  grid-template-rows: 1fr 1px 70px 1px 1fr;
+  grid-template-rows: 1fr 70px 1fr;
+  row-gap: 10px;
+}
+.project-description__aside .aside-card {
+  background: #F9F9F9;
+  border: 1px solid #E3E5E8;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.11);
+  border-radius: 4px;
+  padding: 10px 15px;
+  color: #747F8B;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
 .project-description__stack {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 5px;
 }
 .project-description__tags {
   display: flex;
@@ -134,10 +156,10 @@ export default {
   border-radius: 11px;
 }
 .project-description__tools-links {
-  padding: 5px;
 }
 .project-description__content-table {
-  padding: 5px;
+}
+.project-description__link-tile {
 }
 .link-tile {
   box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.05);
@@ -147,5 +169,11 @@ export default {
   display: flex;
   column-gap: 4px;
   background: white;
+  display: flex;
+  align-items: center;
+}
+.link-tile__icon {
+  display: flex;
+  align-items: center;
 }
 </style>
