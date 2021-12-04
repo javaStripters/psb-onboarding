@@ -47,7 +47,11 @@
     <div class="adaptation-general__aside">
       <MiniProfile 
         class="adaptation-general__mentor"
+        :user="mentor"
+        title="Ваш ментор"
       />
+
+
     </div>
   </div>
 </template>
@@ -89,7 +93,24 @@ export default {
         all: 16,
         title: 'Пройдено испытаний'
       },
-    ]
+    ],
+    mentor: {
+      "id": 2,
+      "fullName": "Patrick Richard Bailey",
+      "profession": "UI-дизайнер",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas mattis lorem quis nisi mollis pretium. Proin accumsan tellus quis ante pharetra ornare quis iaculis tellus.",
+      "contacts": {
+        "phoneNumber": "8 (406) 555-0120",
+        "telegramId": "@felicia",
+        "emailAdress": "tim.jennings@example.com",
+        "facebookId": "Robert_Fox"
+      },
+      "avatar": "avatars/patrick.png",
+      "department": {
+        "id": 2,
+        "name": "Дизайн"
+      }
+    }
   }),
   components: {
     MiniProfile,

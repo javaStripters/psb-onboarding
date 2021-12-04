@@ -29,10 +29,24 @@
           @click="openQuestionPage(question.id)"
         >
           <div class="question__uptitle">
-            вчера 187 просмотров
+            <div class="question__uptitle-item">
+              <img class="question__uptitle-icon" src="../../assets/calendar.svg"/>
+              <div class="question-uptile-text">Вчера</div>
+            </div>
+            <div class="question__uptitle-item">
+              <img class="question__uptitle-icon" src="../../assets/eye.svg"/>
+              <div class="question-uptile-text">4 просмотра</div>
+            </div>
+            <div class="question__uptitle-item">
+              <img class="question__uptitle-icon" src="../../assets/man.svg"/>
+              <div class="question-uptile-text"> {{index == 0 ? 'Joly Lee' : 'Argend Carper'}} Li</div>
+            </div>
           </div>
           <div class="question__title">
             {{question.name}}
+          </div>
+          <div class="question__description">
+            {{question.content}}
           </div>
           <div class="question__tags">
             <div 
@@ -175,21 +189,32 @@ export default {
   padding: 10px 20px;
   display: grid;
   grid-template-columns: auto 80px 80px;
-  grid-template-rows: 20px 40px 20px;
+  grid-template-rows: 20px 40px auto 20px;
   column-gap: 10px;
 }
 .question__uptitle {
   font-size: 14px;
   color: #979A9D;
   grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+}
+.question__uptitle-item {
+  display: flex;
+  column-gap: 5px;
+  align-items: center;
 }
 .question__title {
   grid-area: 2 / 1 / 3 / 2; 
   font-size: 20px;
 }
-
-.question__tags {
+.question__description {
   grid-area: 3 / 1 / 4 / 2;
+  height: 100%;
+}
+.question__tags {
+  grid-area: 4 / 1 / 5 / 2;
   font-size: 12px;
   display: flex;
   column-gap: 5px;
@@ -205,6 +230,7 @@ export default {
   border: 1px solid #E3E5E8;
   border-radius: 4px;
   padding: 0px 10px;
+  max-height: 50px;
   grid-area: 1 / 2 / 4 / 3;
   text-align: center;
   display: flex;
@@ -226,6 +252,7 @@ export default {
   justify-content: center;
   font-size: 18px;
   font-weight: bold;
+  max-height: 50px;
 }
 .question__rating--positive {
   background: #E1FFE6;

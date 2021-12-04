@@ -1,5 +1,6 @@
 <template>
   <div class="user-profile">
+    <div v-if="title" class="user-profile__title">{{title}}</div>
     <div class="user-profile__general" v-if="user">
       <div class="user-profile__icon">
         <img :src="$store.state.server + '/files/' + user.avatar" alt="">
@@ -29,7 +30,8 @@
 <script>
 export default {
   props: [
-    'user'
+    'user',
+    'title'
   ]
 }
 </script>
@@ -40,6 +42,12 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.user-profile__title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 5px;
+  font-weight: 700;
 }
 .user-profile__icon {
   height: 80px;
