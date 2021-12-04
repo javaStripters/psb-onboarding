@@ -72,7 +72,6 @@
 
             </div>
           </div>
-          <div class="complex-card"></div>
           <div class="complex-card forum">
             <div class="complex-card__header">
               <div class="complex-card__title">Форум</div>
@@ -135,6 +134,38 @@
               </div>
             </div>
           </div>
+
+          <div class="complex-card">
+            <div class="complex-card__header">
+              <div class="complex-card__title">События</div>
+              <router-link class="complex-card__more-btn" to="/authorized/forum">
+                <div>Смотреть все</div>
+                <img src="../assets/chevron-right.svg" alt="">
+              </router-link>
+            </div>
+            <div class="complex-card__body events">
+              <v-calendar :attributes="attributes" class="events__calendar"></v-calendar>
+              <div class="events__list">
+                <div class="event__list-item">
+                  <div class="event__list-item-uptitle" style="color: red;">2021.12.03 -- <span>просрочено</span></div>
+                  Разбор беклога
+                </div>
+                <div class="event__list-item">
+                  <div class="event__list-item-uptitle" style="color: green">2021.12.04</div>
+                  Собеседование
+                </div>
+                <div class="event__list-item">
+                  <div class="event__list-item-uptitle">2021.12.07</div>
+                  Подведение итогов спринта
+                </div>
+                <div class="event__list-item">
+                  <div class="event__list-item-uptitle">2021.12.12</div>
+                  Проведение проблемных интервью
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -167,6 +198,32 @@ export default {
     ],
     choosedButton: 'new',
     overSlows: [],
+    attributes: [
+        {
+          dot: 'gray',
+          dates: [
+            new Date(2021, 11, 7), // Jan 1st
+            new Date(2021, 11, 12), // Jan 10th
+            new Date(2018, 0, 22), // Jan 22nd
+          ],
+        },
+        {
+          dot: 'red',
+          dates: [
+            new Date(2021, 11, 3), // Jan 4th
+            new Date(2018, 0, 10), // Jan 10th
+            new Date(2018, 0, 15), // Jan 15th
+          ],
+        },
+        {
+          dot: 'green',
+          dates: [
+            new Date(2021, 11, 4), // Jan 12th
+            new Date(2018, 0, 26), // Jan 26th
+            new Date(2018, 0, 15), // Jan 15th
+          ],
+        },
+      ],
   }),
   methods: {
     getProjects() {
@@ -193,6 +250,7 @@ export default {
   mounted() {
     this.getProjects()
     this.getOverSlows()
+  
 
   },
   components: {
@@ -235,6 +293,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: 55px;
+    color: white;
   }
   .home__button--secondary {
     border: 1px solid #FA4616;
@@ -243,7 +302,6 @@ export default {
     justify-content: center;
     align-items: center;
     height: 50px;
-    
   }
   .home__banner-image {
     grid-area: 1 / 3 / 3 / 4;
@@ -251,7 +309,9 @@ export default {
   }
   .home__card-body {
     display: grid;
-    grid-template-columns: repeat(2, 50%);
+    grid-template-columns: repeat(2, calc(50% - 15px));
+    grid-template-rows: repeat(2, 350px);
+    align-items: stretch;
     gap: 30px;
   }
 
@@ -281,7 +341,7 @@ export default {
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.11);
     border-radius: 4px;
     padding: 10px;
-
+    height: calc(100% - 60px);
   }
   .complex-card__body--horizontal-scroll {
     overflow-x: auto;
@@ -292,9 +352,33 @@ export default {
   .forum {
     grid-area: 1 / 2 / 3 / 3;
     height: 100%;
+    overflow-x: hidden;
   }
 
 
+
+  .events {
+    display: flex;
+    column-gap: 10px;
+  }
+  .events__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    width: 100%;
+  }
+  .event__list-item {
+    background: #FDFEFE;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.11);
+    border-radius: 4px;
+    width: 100%;
+    padding: 5px 10px;
+    line-height: 1rem;
+  }
+  .event__list-item-uptitle {
+    font-size: 12px;
+    color: #ddd;
+  }
 
 
 
@@ -427,7 +511,7 @@ export default {
   padding: 10px 20px;
   display: grid;
   grid-template-columns: auto ;
-  grid-template-rows: 20px 40px auto 20px;
+  grid-template-rows: 20px min-content auto 20px;
   column-gap: 10px;
 }
 .question__uptitle {

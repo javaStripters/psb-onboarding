@@ -4,6 +4,8 @@ import router from './router'
 import store from './store'
 import Editor from 'v-markdown-editor'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import VCalendar from 'v-calendar';
+
 
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -15,6 +17,7 @@ Vue.use(BootstrapVue)
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin)
 Vue.use(Editor)
+Vue.use(VCalendar)
 
 
 

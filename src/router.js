@@ -69,6 +69,10 @@ const routes = [
           {
             path: 'leaders',
             component: () => import('./views/forum/Leaders.vue')
+          },
+          {
+            path: 'ask',
+            component: () => import('./views/forum/CreateQuestion.vue')
           }
         ]
       },

@@ -16,10 +16,10 @@
             {{button.text}} 
           </button>
         </div>
-        <button class="stack-over-slow__add-question-btn">
+        <router-link to="/authorized/forum/ask" class="stack-over-slow__add-question-btn">
           <img src="../../assets/plus.svg" alt="">
           <div>Задать вопрос</div>
-        </button>
+        </router-link>
       </div>
       <div class="stack-over-slow__questions">
         <div 
@@ -189,7 +189,7 @@ export default {
   padding: 10px 20px;
   display: grid;
   grid-template-columns: auto 80px 80px;
-  grid-template-rows: 20px 40px auto 20px;
+  grid-template-rows: 20px min-content auto 20px;
   column-gap: 10px;
 }
 .question__uptitle {
